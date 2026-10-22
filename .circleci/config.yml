@@ -23,7 +23,7 @@ jobs:
           command: |
             echo "=== available Xcode ==="
             ls -d /Applications/Xcode*.app 2>/dev/null || echo none
-            XC=$(ls -d /Applications/Xcode_*.app 2>/dev/null | sort -V | head -1)
+            XC=$(ls -d /Applications/Xcode_*.app /Applications/Xcode-*.app 2>/dev/null | sort -V | head -1 || true)
             echo "picked: $XC"
             if [ -n "$XC" ]; then
               sudo xcode-select -s "$XC/Contents/Developer"
